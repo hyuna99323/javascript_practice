@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01_script_load</title>
+  <script src="./script2.js"></script>
+  <!-- 자바스크립트 태그를 발견하면 외부에 있는 자바스크립트를 다운로드하기 시작 -> 다운로드 한 후 나머지 내용 실행 -->
+
+  <!-- src를 안썼다면 아래 내용과 정확히 동일 -->
+  <script>
+    // var hw = document.getElementById('hw');
+    // hw.addEventListener('click', function(){
+    //   alert('Hello world');
+    // })
+    // // 따라서, html 입장에서 보면 아래의 input 태그를 아직 존재하지 않는데 갑자기 hw을 조회하고 있기 때문에 찾아낼 수 x
+
+    window.onload = function(){
+      // onload = 현재 웹 페이지의 모든 코드가 다 읽힌 후에 모든 이미지, 스크립트들이 다운로드가 끝나서 웹 페이지가 다 완성이 됐을 때 웹브라우저는 윈도우 객체의 onload를 실행 하라 
+      // 해당 코드를 <body> 태그 끝에 위치 시켰다면 onload는 필요 없음
+      var hw = document.getElementById('hw');
+      hw.addEventListener('click', function(){
+          alert('Hello world');
+      })
+    }
+  </script>
+
+</head>
+<body>
+  <!-- inline 방식 -->
+  <!-- <input type="button" onclick="alert('Hello world')" value="Hello world" /> -->
+  <!-- onclick="" = html의 문법, alert('Hello world' = javascript의 문법 -->
+
+  <!-- script 방식 -->
+  <!-- <input type="button" id="hw" value="Hello world" />
+  <script>
+    var hw = document.getElementById('hw');
+    // hw = 위의 input 태그의 id 값을 가져옴
+    hw.addEventListener('click', function(){
+      // 해당 태그에 클릭 이벤트를 사용하면 함수 안의 결과가 실행 된다
+      alert('Hello world');
+    })
+  </script> -->
+  <!-- <script> 태그까지는 html의 문법, <script> 태그 안의 내용은 자바스크립트로 해석, </script>부터 다시 html의 문법 -->
+
+  <!-- 외부 파일로 분리하는 방식 -->
+  <input type="button" id="hw" value="Hello world" />
+  <!-- <script src="./script.js"></script> -->
+</body>
+</html>
