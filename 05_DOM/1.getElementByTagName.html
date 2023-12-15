@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+<!-- 모든 li를 찾아 냄 -->
+<!-- <ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+</ul>
+<script>
+    var lis = document.getElementsByTagName('li');
+    // document = 문서 전체에서 getElementsByTagName을 통해서 li태그 찾기 
+    // lis = 해당 값을 return해주는 method -> method가 return 해주는 값 = li의 태그들에 담은 각각의 객체를 담은 유사배열을 return하여 변수에 담게 됨
+    // 유사 배열 : 배열과 유사하다는 뜻
+    for(var i=0; i < lis.length; i++){
+      // i값을 0부터 1씩 증가시키면서 lis의 li태그의 갯수만큼 반복문(for)에 돌림
+      // 값 = 3
+        lis[i].style.color='red';
+        // lis[i]의 i값 = 0, 1, 2 -> 해당 값의 글자색을 빨간색으로 변경해라 
+    }
+</script> -->
+
+<!-- 조회대상을 좁히는 방법
+ex) ul이라는 객체의 하위에 있는 li 태그들만 찾고자 하는 방법 -->
+<ul>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
+</ul>
+<ol>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
+</ol>
+<script>
+  var ul = document.getElementsByTagName('ul')[0];
+  // ul의 태그들 먼저 찾아 줌                 [0] = 찾은 ul 태그들의 배열에 첫번째 값을 가져와서 ul이라는 변수에 담아라
+  var lis = ul.getElementsByTagName('li');
+  // 변수 ul에서 li 태그들을 찾아라
+  for(var i=0; lis.length; i++){
+    lis[i].style.color='red';
+  }
+</script>
+<a href="./2.getElementsByClassName.html">getElementsByClassName</a>
+</body>
+</html>

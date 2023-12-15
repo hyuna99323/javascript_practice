@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>navigator_test</title>
+</head>
+<body>
+  <script>
+    if(!Object.keys) {
+    // Object.keys가 false일 때 !가 붙으면 true로 바뀌고 if안의 조건문 실행 됨
+      Object.keys = (function () {
+      // 만약, object라는 객체가 keys를 가지고 있다면 해당 문장을 실행 안하고 그냥 key를 사용
+      //  가지고 있지 않다면 key라는 메소드를 해당 문장으로 정의하면 됨
+      'use strict';
+      var hasOwnProperty = Object.prototype.hasOwnProperty,
+          hasDontEnumBug = !({toString: null}).propertyIsEnumerable('toString'),
+          dontEnums = [
+            'toString',
+            'toLocaleString',
+            'valueOf',
+            'hasOwnProperty',
+            'isPrototypeOf',
+            'propertyIsEnumerable',
+            'constructor'
+          ],
+          dontEnumsLength = dontEnums.length;
+      
+      return function (obj) {
+        if (typeof obj !== 'object' && (typeof obj !== 'function' || obj === null)) {
+          throw new TypeError('Object.keys called on non-object');
+        }
+      
+        var result = [], prop, i;
+      
+        for (prop in obj) {
+          if (hasOwnProperty.call(obj, prop)) {
+            result.push(prop);
+          }
+        }
+      }
+      if (hasDontEnumBug) {
+          for (i = 0; i < dontEnumsLength; i++) {
+            if (hasOwnProperty.call(obj, dontEnums[i])) {
+              result.push(dontEnums[i]);
+            }
+          }
+        }
+        return result;
+      }());
+    }
+  </script>
+</body>
+</html>
