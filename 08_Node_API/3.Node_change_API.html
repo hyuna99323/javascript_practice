@@ -13,7 +13,7 @@
   <input type="button" onclick="callAppendChild();" value="appendChild()" />
   <input type="button" onclick="callInsertBefore();" value="insertBefore()" />
   <input type="button" onclick="callRemoveChild();" value="removeChild()" />
-  <input type="button" onclick="callReplaceChild();" value="replaceChild()" />
+  <input type="button" onclick="callReplaceChild();" value="replaceChild()" /> <br />
 
   <script>
     function callAppendChild(){
@@ -40,11 +40,15 @@
     function callReplaceChild(){
         var a = document.createElement('a');
         a.setAttribute('href', 'http://opentutorials.org/module/904/6701');
+        // 교체하고자 하는 내용
         a.appendChild(document.createTextNode('Web browser JavaScript'));
+        // 하위 엘리먼트로 추가 + createTextNode로 교체명 지정
 
         var target = document.getElementById('target');
         target.replaceChild(a,target.firstChild);
+        // 인자1 : 교체하려는 대상, 인자2: 교체하려는 내용
     }
   </script>
+  <a href="./4.jQuery_node.html">jQuery node 제어 API</a>
 </body>
 </html>

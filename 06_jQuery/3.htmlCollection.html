@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li id="active">JavaScript</li>
+  </ul>
+  <script>
+    console.group('before'); //에서 
+    var lis = document.getElementsByTagName('li'); // HTMLCollection
+    for(var i = 0; i < lis.length; i++){
+        console.log(lis[i]);
+        // [i]처럼 배열 사용 가능
+    }
+    console.groupEnd(); // 사이에 나타나는 console.log들을 그룹핑해서 보여줌
+    console.group('after'); // 새로운 그룹을 만들음
+    lis[1].parentNode.removeChild(lis[1]);
+    // removeChild를 통해 배열의 1번째 순서에 나오는 값을 삭제함
+    for(var i = 0; i < lis.length; i++){
+        console.log(lis[i]);
+    }
+    // 해당 for문과 위의 for문이 같음 -> lis 변수에 담겨 있는 elementcollection 엘리먼트가 현재 가지고 있는 엘리먼트들의 리스트들을 출력함
+    // 위의 for문에서 출력한 내용과 해당 for문에서 출력한 내용이 같은지를 확인하기 위함
+    console.groupEnd(); // 새로운 그룹 끝
+  </script>
+  <a href="./4.jQuery_object.html">jQuery_object</a>
+</body>
+</html>

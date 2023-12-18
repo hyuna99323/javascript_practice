@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 예제1 -->
+  <!-- <ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li id="active">JavaScript</li>
+</ul>
+<script>
+    var li = document.getElementById('active');
+    // document..getElementById('active')한 값을 변수 li에 담음
+    console.log(li.constructor.name); // HTMLElement
+    // constructor.name : 해당 객체의 이름이 무엇인지 알아냄
+    // // HTMLElement : 조회한 결과의 객체가 하나만 return됨
+    var lis = document.getElementsByTagName('li');
+    // document.getElementsByTagName('li')한 값을 변수 lis에 담음
+    console.log(lis.constructor.name); // HTMLCollection
+    // HTMLCollection : 조회한 method가 (getElement's')복수계의 태그들을 리턴한 값, 유사배열(여러개의 element)
+</script> -->
+
+<!-- 예제2 -->
+<a id="anchor" href="http://opentutorials.org">opentutorials</a>
+<ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li id="list">JavaScript</li>
+</ul>
+<input type="button" id="button" value="button" />
+<script>
+  // 각각의 태그명에 따라 HTML과 Element 사이에 들어오는 명칭이 다름 -> 객체가 다름 -> 기능이 다름
+  // 공통적 프로퍼티를 가지고 있으면서 각각의 태그의 성격과 쓰임, 스펙에 따라 기능이 다르기 때문에 각자의 엘리먼트가 다른객체를 가지고 있어야 함 
+    var target = document.getElementById('list');
+    console.log(target.constructor.name); // HTMLLIElement
+
+    var target = document.getElementById('anchor');
+    console.log(target.constructor.name); // HTMLAnchorElement
+
+    var target = document.getElementById('button');
+    console.log(target.constructor.name); // HTMLInputElement
+</script>
+
+<a href="../06_jQuery/3.htmlCollection.html">htmlCollection</a>
+
+</body>
+</html>
