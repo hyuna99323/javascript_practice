@@ -18,8 +18,10 @@
     </li>
   </ul>
   <script src="../lib/jquery-3.7.1.min.js"></script>
+  <!-- id가 active인 것 안에 있는 class명이 marked인 것만 골라 배경을 빨간색으로 주고 싶은 경우 -->
   <script>
       $( ".marked", "#active").css( "background-color", "red" );
+      // 1. 효과를 주고 싶은 엘리먼트를 지정 2. 인자1을 제어하고자 하는 엘리먼트가 오게 됨(selector context)
   </script>
 </body>
 </html>

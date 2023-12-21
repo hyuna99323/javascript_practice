@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <ul id="target">
+    <li>HTML</li>
+    <li>CSS</li>
+  </ul>
+  <input type="button" onclick="get();" value="get" />
+  <input type="button" onclick="set();" value="set" />
+  <script>
+    // innerHTML
+    // function get(){
+    //   var target = document.getElementById('target');
+    //   alert(target.innerHTML);
+    //   // target이라는 엘리먼트 안쪽에 있는 코드가 그대로 출력
+    // }
+    // function set(){
+    //   var target = document.getElementById('target');
+    //   target.innerHTML = "<li>JavaScript Core</li><li>BOM</li><li>DOM</li>";
+    //   // target의 엘리먼트의 기존있던 코드에 위에 작성한 내용으로 추가 변경 됨
+    // }
+    
+    // outerHTML
+    // function get(){
+    //   var target = document.getElementById('target');
+    //   alert(target.outerHTML);
+    // }
+    // function set(){
+    //   var target = document.getElementById('target');
+    //   target.outerHTML = "<ol><li>JavaScript Core</li><li>BOM</li><li>DOM</li></ol>";
+    // }
+  </script> -->
+
+  <ul id="target">
+    <li>CSS</li>
+  </ul>
+  <input type="button" onclick="beforebegin();" value="beforebegin" />
+  <input type="button" onclick="afterbegin();" value="afterbegin" />
+  <input type="button" onclick="beforeend();" value="beforeend" />
+  <input type="button" onclick="afterend();" value="afterend" />
+  <script>
+    // 인자1 = 해당 위치에 전달, 인자2 = 추가할 HTML 코드
+    function beforebegin(){
+      var target = document.getElementById('target');
+      target.insertAdjacentHTML('beforebegin','<h1>Client Side</h1>');
+      // beforebegin : target 등장 전(ul 시작 태그 전)에 위치
+    }
+    function afterbegin(){
+      var target = document.getElementById('target');
+      target.insertAdjacentHTML('afterbegin','<li>HTML</li>');
+      // afterbegin : target 등장 후 (ul 시작 태그 뒤)에 위치
+    }
+    function beforeend(){
+      var target = document.getElementById('target');
+      target.insertAdjacentHTML('beforeend','<li>JavaScript</li>');
+      // beforeend : 엘리먼트가 끝나기 직전(ul 끝 태그 전)에 위치
+    }
+    function afterend(){
+      var target = document.getElementById('target');
+      target.insertAdjacentHTML('afterend','<h1>Server Side</h1>');
+      // afterend : 엘리먼트가 끝난 직후(ul 끝 태그 뒤)에 위치
+    }
+  </script>
+</body>
+</html>
