@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="button" id="target" value="button">
+
+  <script>
+    // var t = document.getElementById('target');
+    // t.onclick = function(event){
+    //   // 인자1가 이벤트 객체를 받아낼 수있도록 event 파라미터 만들어줌
+    //   // alert('Hello world, '+event.target.value)
+    //   // 이벤트 함수를 이벤트 핸들러라고도 함
+    //   // 해당 함수의 인자1로 이벤트 객체라는 것을 전달해주기로 약속되어 있음
+    //   /* target프로퍼티 = 이벤트가 호출되는 시점에서 이벤트가 어디서 발생한 것인지를 알려줌 
+    //     해당 프로퍼티에 value를 하면 해당 함수가 호출된 이벤트 target이 갖고 있는 value값 = <input>의 button
+    //   */
+    // console.dir(event);
+    // // console.dir = 인자(event)로 들어온 객체에 프로퍼티들을 쉽게 탐색할 수 O
+    // } 
+  // IE는 현재 운영 중단(크로스브라우징 이슈) 해결방법
+    var t = document.getElementById('target');
+    t.onclick = function(event){
+      var event = event || window.event;
+      // 인자로 적달된 이벤트 있을 시 바로 사용, 없을 시 window.event 사용
+      var target = event.target || event.srcElement;
+      alert('Hello world, '+target.value)
+    }
+  </script>
+  <a href="./2.addEventListener.html">addEventListener</a>
+</body>
+</html>

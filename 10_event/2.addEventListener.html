@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="button" id="target" value="button">
+
+  <script>
+    var t = document.getElementById('target');
+    t.addEventListener('click', function(event){
+      // id값이 target인 엘리먼트.addEventListener로 메소드 호출
+      // addEventListener(event type, event handler(or listener))
+      alert('Hello world, '+event.target.value);
+    });
+
+    // 크로스브라우징 이슈 해결 방법
+    // // attachEvent 메소드 사용
+    // var t = document.getElementById('target');
+    // if(t.addEventListener){
+    //   t.addEventListener('click', function(event){
+    //     alert('Hello world, '+event.target.value);
+    //   }); 
+    // } else if(t.attachEvent){
+    //   t.attachEvent('onclick', function(event){
+    //     alert('Hello world, '+event.target.value);
+    //   })
+    // }
+    
+    // 따라서, 둘을 합쳐서 사용하고자 한다면 BUT, 최근에는 알아서 해결 되도록 작동
+    // var t = document.getElementById('target');
+    // if(t.addEventListener){
+    //   t.addEventListener('click', function(event){
+    //     alert('Hello world, '+event.target.value);
+    //   });
+    // } else if(t.attachEvent){
+    //   t.attachEvent('onclick', function(event){
+    //     alert('Hello world, '+event.target.value);
+    //   })
+    // }
+  </script>
+  <a href="./3.mouseEvent.html">마우스 이벤트</a>
+</body>
+</html>
