@@ -99,31 +99,48 @@
     </table>
     <script>
     var t = document.getElementById('target');
+    // 녹색상자 엘리먼트
     function handler(event){
       var info = document.getElementById('elm'+event.type);
+      // elm = 엘리먼트 줄임말
       var time = new Date();
       var timestr = time.getMilliseconds();
       info.innerHTML = (timestr);
       if(event.altKey){
+        // alt키를 사용자고 누르고 있다면 true 아니면 false
           document.getElementById('elmaltkey').innerHTML = timestr;
       }
       if(event.ctrlKey){
+        // ctrl키를 사용자고 누르고 있다면 true 아니면 false
           document.getElementById('elmctrlkey').innerHTML = timestr;
       }
       if(event.shiftKey){
+        // shift키를 사용자고 누르고 있다면 true 아니면 false
           document.getElementById('elmshiftKey').innerHTML = timestr;
       }
+      // 마우스의 위치 X와 Y로 알 수 O
       document.getElementById('elemclientx').innerHTML = event.clientX;
       document.getElementById('elemclienty').innerHTML = event.clientY;
     }
+    // 인자2에 모두 똑같은 이벤트 핸들러를 적용
     t.addEventListener('click', handler);
+    // 마우스 클릭
     t.addEventListener('dblclick', handler);
+    // 더블클릭
     t.addEventListener('mousedown', handler);
+    // 마우스를 누를 때
     t.addEventListener('mouseup', handler);
+    // 마우스를 눌렀다 뗄때
     t.addEventListener('mousemove', handler);
+    // 마우스가 움직일 때
     t.addEventListener('mouseover', handler);
+    // 마우스가 들어갔을 때
     t.addEventListener('mouseout', handler);
+    // 마우스가 나갔을 때
     t.addEventListener('contextmenu', handler);
+    // 오른쪽 클릭 했을 때
+    // 기본동작 취소시키는 메소드 사용하면 작동 X
     </script>
+    <a href="./4.jqery_event.html">jQery event</a>
   </body>
 </html>

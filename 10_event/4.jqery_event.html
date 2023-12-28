@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="button" id="pure" value="pure" />
+  <input type="button" id="jquery" value="jQuery" />
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script>
+    // 순수하게 구현했을 때
+    var target = document.getElementById('pure');
+    // target 먼저 찾음
+    if(target.addEventListener){
+      target.addEventListener('click', function(event){
+        alert('pure');
+      });
+    } else {
+      target.attachEvent('onclick', function(event){
+        // 
+        alert('pure');
+      });
+    }
+  
+    // jQuery를 사용했을 때
+    $('#jquery').on('click', function(event){
+      // 선택자를 $('#jquery')로 선택 가능
+      // on을 이용하여 적당한 이벤트 핸들러를 사용하도록 함
+      // cilck하는 이벤트가 발생했을 때
+      alert('jQuery');
+    })
+  </script>
+  <a href="./5.jquery_onapi.html">on API</a>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>time : <span id="time"></span></p>
+  <!-- id가 time인 엘리먼트의 컨텐트영역에 타임이 들어감 -->
+  <input type="button" id="execute" value="execute">
+  <!-- id가 execute인 버튼을 클릭했을 때 서버와 통신하게 됨 -->
+  <script>
+  document.querySelector('input').addEventListener('click', function(event){
+    var xhr = new XMLHttpRequest();
+    // 이벤트리스너에 의해 1. XMLHttpRequest 생성하여 xhr이라는 변수에 담음
+    xhr.open('GET', './time.php');
+    // 2. xhr.open이라는 메소드로 호출 인자1 = GET방식으로 통신한다는 의미 인자2 = 서버와 통신하는 서버쪽의 url
+    // form 태그와 비슷하게 유추하면 됨 <form method ="GET" action = "./time.php">와 같음
+    xhr.onreadystatechange = function(){
+      // onreadystatechange 이벤트 = 통신이 끝났을 때 호출
+      if(xhr.readyState === 4 && xhr.status === 200){
+        // xhr 객체의 프로퍼티 중에 readyState라는 프로퍼티 존재
+        // readyState = 통신의 현재 상태 알려줌 4 = 통신 완료되었음을 의미
+        // status = HTTP 통신의 결과를 의미 200 = 통신 성공, 404 = not found (요청한 리소스 존재 X)
+        document.querySelector('#time').innerHTML = xhr.responseText;
+        // responseText 프로퍼티 = 서버에서 전송한 데이터를 담고 있음 이것을 id가 time엘리먼트의 하위로 삽입
+        // 이 과정을 통해 현재 서버에서 가져온 현재 시간을 페이지 리로딩 없이 가져올 수 있음
+      }
+    }
+    xhr.send(); 
+    // 통신 시작
+    // 위의 open과 send는 무조건 순서를 지켜야 한다 open -> send
+  }); 
+  </script> 
+  <a href="./2.post.html">POST</a>
+</body>
+</html>

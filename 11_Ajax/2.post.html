@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>time : <span id="time"></span></p>
+  <select id="timezone">
+    <option value="Asia/Seoul">asia/seoul</option>
+    <option value="America/New_York">America/New_York</option>
+  </select>
+  <select id="format">
+    <option value="Y-m-d H:i:s">Y-m-d H:i:s</option>
+    <option value="Y-m-d">Y-m-d</option>
+  </select>
+  <input type="button" id="execute" value="execute" />
+  <script>
+  document.querySelector('input').addEventListener('click', function(event){
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', './time2.php');
+    // 전송방법을 POST로 설정
+    xhr.onreadystatechange = function(){
+      document.querySelector('#time').innerHTML = xhr.responseText;
+    }
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    // 서버로 전송할 인자1 = 데이터 타입(Content-Type)의 형식을 인자2 = application/x-www-form-urlencoded로 지정해야 함
+    var data = '';
+    data += 'timezone='+document.getElementById('timezone').value;
+    // 전송할 데이트를 만들기 위해 value로 하여 현재 선택되어 있는 옵션의 value 값이 현재 이 위치로 들어옴
+    data += '&format='+document.getElementById('format').value;
+    // 서버로 전송할 데이터 형식에 맞게 만들음 -> 이름=값&이름=값... 의 형식을 지켜야함
+    // 값과 값을 구분하기 위해선 &을 사용
+    // 값의 이름과 값의 내용을 구분해줄 땐 = 사용해야 함
+    xhr.send(data); 
+  });
+  </script> 
+</body>
+</html>
