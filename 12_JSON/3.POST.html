@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>time : <span id="time"></span></p>
+  <form>
+    <select name="timezone">
+      <option value="Asia/Seoul">asia/seoul</option>
+      <option value="America/New_York">America/New_York</option>
+    </select>
+    <select name="format">
+      <option value="Y-m-d H:i:s">Y-m-d H:i:s</option>
+      <option value="Y-m-d">Y-m-d</option>
+    </select>
+  </form>
+  <input type="button" id="execute" value="execute" />
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script>
+    $('#execute').click(function(){
+      // id가 execute인 버튼을 클릭했을 때
+      $.ajax({
+        // 옵션 설정
+        url:'./time2.php',
+        // url은 ./time2.php로 지정
+        type:'post',
+        // post를 옵션으로 지정해줘야 함
+        // GET은 기본값이므로 지정 X
+        data:$('form').serialize(),
+        // 서버쪽으로 전송할 데이터 지정 (여기선 시간의 형식)
+        // form이라는 태그 name을 가지고 있는 serialize를 하게 되면 form태그가 갖고 있는 여러 form의 구성요소에 대한 여러 값을 만들어줌
+        success:function(data){
+          $('#time').text(data);
+        }
+      })
+    })
+  </script>
+  <a href="./4.$ajax.html">$ajax을 이용한 JSON cjfl</a>
+</body>
+</html>
